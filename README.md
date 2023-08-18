@@ -24,7 +24,7 @@ Corpo da Requisição:
 
 ```json
 {
-    "username": "admin",
+    "login": "admin",
     "password": "senha"
 }
 ```
@@ -35,7 +35,6 @@ Endpoint: `GET /tasks`
 
 Descrição: Retorna uma lista de todas as tarefas cadastradas no sistema.
 
-Resposta de Exemplo:
 
 ```json
 [
@@ -43,9 +42,26 @@ Resposta de Exemplo:
         "id": 1,
         "title": "Estudar para o exame de Programação",
         "description": "Revisar os capítulos 5 a 8 do livro-texto e fazer exercícios práticos.",
-        "completedStatus": "COMPLETED"
+        "completedStatus": "PENDING"
     },
-    // ... outras tarefas ...
+    {
+        "id": 2,
+        "title": "Projeto de Grupo: Desenvolvimento de Aplicativo",
+        "description": "Reunião para discutir a ideia do aplicativo e atribuir tarefas aos membros do grupo.",
+        "completedStatus": "IN_PROGRESS"
+    },
+    {
+        "id": 3,
+        "title": "Preparar apresentação de Seminário",
+        "description": "Criar slides e ensaiar a apresentação sobre metodologias ágeis.",
+        "completedStatus": "PENDING"
+    },
+    {
+        "id": 4,
+        "title": "Entrega do Trabalho de Banco de Dados",
+        "description": "Finalizar a modelagem do banco de dados e escrever a documentação técnica.",
+        "completedStatus": "COMPLETED"
+    }
 ]
 ```
 
@@ -59,9 +75,9 @@ Corpo da Requisição:
 
 ```json
 {
-    "title": "Nova Tarefa",
-    "description": "Descrição da nova tarefa",
-    "completedStatus": "PENDING"
+     "title": "Estudar java",
+    "description": "Estudar Java, Spring Boot",
+    "completedStatus": "IN_PROGRESS"
 }
 ```
 
@@ -75,8 +91,8 @@ Corpo da Requisição:
 
 ```json
 {
-    "title": "Título Atualizado",
-    "description": "Nova descrição da tarefa",
+    "title": "Estudar Java",
+    "description": "Estudar Java, Spring Boot e MySQL",
     "completedStatus": "IN_PROGRESS"
 }
 ```
@@ -106,18 +122,25 @@ Resposta de Exemplo:
 
 ### Detalhes do Usuário Autenticado
 
-Endpoint: `GET /auth/user`
+Endpoint: `GET /auth/users`
 
 Descrição: Retorna os detalhes do usuário autenticado.
 
 Resposta de Exemplo:
 
 ```json
-{
-    "id": 123,
-    "username": "admin",
-    "role": "admin"
-}
+[
+    {
+        "id": 1,
+        "login": "maxsuel",
+        "role": "ADMIN"
+    },
+    {
+        "id": 2,
+        "login": "maxaluno",
+        "role": "USER"
+    }
+]
 ```
 
 ## Controle de Acesso
