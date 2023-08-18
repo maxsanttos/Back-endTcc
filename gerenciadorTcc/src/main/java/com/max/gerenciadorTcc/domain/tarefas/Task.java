@@ -5,11 +5,7 @@ package com.max.gerenciadorTcc.domain.tarefas;
 import com.max.gerenciadorTcc.domain.enums.CompletedStatus;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.*;
-
-
 
 @Entity(name = "tarefa")
 @Table(name = "tarefa")
