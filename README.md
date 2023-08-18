@@ -1,7 +1,5 @@
 # BanckendTcc
 
-## Gerenciador de Tarefas
-
 ## Visão Geral
 
 O projeto de Back End do Gerenciador de Tarefas é uma aplicação desenvolvida utilizando as tecnologias Java, Spring Boot 3.1.2 e autenticação JWT para fornecer um sistema de gerenciamento de tarefas. A aplicação permite aos usuários criar, visualizar, atualizar e excluir tarefas, com um sistema de controle de acesso baseado em funções (RBAC). Usuários autenticados com a função de administrador (admin) têm permissão para realizar operações de criação, atualização e exclusão de tarefas, além de obter detalhes de todas as tarefas e tarefas por ID. Usuários autenticados com a função de usuário (USER) têm permissão somente para obter detalhes de todas as tarefas e tarefas por ID.
