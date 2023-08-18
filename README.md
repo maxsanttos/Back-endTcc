@@ -35,7 +35,6 @@ Endpoint: `GET /tasks`
 
 Descrição: Retorna uma lista de todas as tarefas cadastradas no sistema.
 
-
 ```json
 [
     {
