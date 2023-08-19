@@ -26,9 +26,7 @@ public class Task {
     @Column(name = "description", nullable = false)
     private String description;
 
-
-    @Enumerated(EnumType.STRING) // Mapeia o enum como string
-    @Column(name = "completed_status", nullable = false) // Nome da coluna no banco de dados
+    @Enumerated(EnumType.STRING)
+    @Column(name = "completed_status", nullable = false)
     private CompletedStatus completedStatus;
-
 }

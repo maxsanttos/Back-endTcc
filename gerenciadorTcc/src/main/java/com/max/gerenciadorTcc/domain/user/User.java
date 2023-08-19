@@ -2,18 +2,12 @@ package com.max.gerenciadorTcc.domain.user;
 
 import java.util.Collection;
 import java.util.List;
-
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import com.max.gerenciadorTcc.domain.enums.UserRole;
-
 import jakarta.persistence.*;
 import lombok.*;
-
-
 
 @Entity(name = "users")
 @Table(name = "users")
@@ -71,5 +65,4 @@ public class User implements UserDetails{
     public boolean isEnabled() {
         return true;
     }
-
 }

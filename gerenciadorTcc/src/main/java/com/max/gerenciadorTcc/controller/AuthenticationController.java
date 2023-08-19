@@ -2,10 +2,8 @@ package com.max.gerenciadorTcc.controller;
 
 import com.max.gerenciadorTcc.config.security.TokenService;
 import com.max.gerenciadorTcc.controller.dto.UserInfoDTO;
-
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -58,7 +56,7 @@ public class AuthenticationController {
         return ResponseEntity.ok().build();
     }
 
-      @GetMapping("/users")
+    @GetMapping("/users")
     public ResponseEntity<List<UserInfoDTO>> getAllUsers() {
         List<User> users = repository.findAll();
         List<UserInfoDTO> userInfos = users.stream()

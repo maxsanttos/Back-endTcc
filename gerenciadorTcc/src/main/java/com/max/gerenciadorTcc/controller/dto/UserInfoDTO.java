@@ -1,7 +1,6 @@
 package com.max.gerenciadorTcc.controller.dto;
 
 import com.max.gerenciadorTcc.domain.enums.UserRole;
-
 import lombok.*;
 
 @Getter

@@ -31,8 +31,6 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-
-    // Listando todas as Tarefas
     @GetMapping
     public ResponseEntity<List<TaskDTO>> getAllTasks() {
         List<Task> tasks = taskService.getAllTasks();
@@ -42,7 +40,6 @@ public class TaskController {
         return new ResponseEntity<>(taskDTOs, HttpStatus.OK);
     }
 
-    // Listando as tarefas por id
     @GetMapping("/{id}")
     public ResponseEntity<TaskDTO> getTaskById(@PathVariable Long id) {
         Optional<Task> taskOptional = taskService.getTaskById(id);
@@ -54,7 +51,6 @@ public class TaskController {
         }
     }
 
-    // Criando tarefas 
     @PostMapping
     public ResponseEntity<TaskDTO> createTask(@RequestBody TaskDTO taskDTO) {
         Task createdTask = taskService.createTask(taskDTO);
@@ -62,7 +58,6 @@ public class TaskController {
         return new ResponseEntity<>(createdTaskDTO, HttpStatus.CREATED);
     }
 
-    // Atualizando Tarefas 
     @PutMapping("/{id}")
     public ResponseEntity<TaskDTO> updateTask(@PathVariable Long id, @RequestBody TaskDTO taskDTO) {
         Task updatedTask = taskService.updateTask(id, taskDTO);
@@ -74,7 +69,6 @@ public class TaskController {
         }
     }
 
-    // Deletando tarefas
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTask(@PathVariable Long id) {
         taskService.deleteTask(id);
@@ -90,5 +84,4 @@ public class TaskController {
                 .completedStatus(task.getCompletedStatus())
                 .build();
     }
-
 }

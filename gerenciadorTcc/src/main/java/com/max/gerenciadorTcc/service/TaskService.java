@@ -19,18 +19,14 @@ public class TaskService {
         this.taskRepository = taskRepository;
     }
 
-    // obter todas as tarefas
     public List<Task> getAllTasks(){
         return taskRepository.findAll();
     }
 
-    // obter todas as tarefas por Id
     public Optional<Task> getTaskById(Long id) {
         return taskRepository.findById(id);
     }
 
-
-    // creating tasks
     public Task createTask(TaskDTO taskDTO){
         Task task = new Task();
         task.setTitle(taskDTO.getTitle());
@@ -39,7 +35,6 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
-    // Update tasks
     public Task updateTask(Long id, TaskDTO taskDTO){
 
         if (id == null || taskDTO == null) {
@@ -58,7 +53,6 @@ public class TaskService {
         }
     }
 
-    // deletando tarefas
     public void deleteTask(Long id) {
         taskRepository.deleteById(id);
     }
