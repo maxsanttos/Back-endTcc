@@ -2,7 +2,6 @@ package com.max.gerenciadorTcc.controller;
 
 import com.max.gerenciadorTcc.config.security.TokenService;
 import com.max.gerenciadorTcc.controller.dto.UserInfoDTO;
-import com.max.gerenciadorTcc.domain.user.LoginResponseDTO;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,9 +14,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import com.max.gerenciadorTcc.domain.repository.UserRepository;
-import com.max.gerenciadorTcc.domain.user.AuthentaticationDTO;
-import com.max.gerenciadorTcc.domain.user.RegisterDTO;
 import com.max.gerenciadorTcc.domain.user.User;
+import com.max.gerenciadorTcc.domain.user.dtos.AuthentaticationDTO;
+import com.max.gerenciadorTcc.domain.user.dtos.LoginResponseDTO;
+import com.max.gerenciadorTcc.domain.user.dtos.RegisterDTO;
 
 import jakarta.validation.Valid;
 

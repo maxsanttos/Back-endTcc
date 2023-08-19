@@ -1,4 +1,4 @@
-package com.max.gerenciadorTcc.domain.user;
+package com.max.gerenciadorTcc.domain.user.dtos;
 
 import com.max.gerenciadorTcc.domain.enums.UserRole;
 
