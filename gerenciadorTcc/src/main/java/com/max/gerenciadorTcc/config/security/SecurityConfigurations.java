@@ -21,19 +21,18 @@ public class SecurityConfigurations {
 
     @Autowired
     SecurityFiltrer securityFiltrer;
-    
+
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
             .csrf(AbstractHttpConfigurer::disable)
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers(HttpMethod.POST,"/auth/login").permitAll()
-                .requestMatchers(HttpMethod.POST, "/auth/register").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
                 .requestMatchers(HttpMethod.POST,"/tasks").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.PUT,"/tasks/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.DELETE,"/tasks/**").hasRole("ADMIN")
-
                 .anyRequest().authenticated()
             )
             .addFilterBefore(securityFiltrer, UsernamePasswordAuthenticationFilter.class)
@@ -41,12 +40,13 @@ public class SecurityConfigurations {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception{
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }
+
