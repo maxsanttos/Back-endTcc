@@ -14,6 +14,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
 @EnableWebSecurity
@@ -23,16 +26,28 @@ public class SecurityConfigurations {
     SecurityFiltrer securityFiltrer;
 
     @Bean
+    public CorsConfigurationSource corsConfigurationSourceCorsConfig() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.addAllowedOrigin("http://localhost:4200"); // Defina os domínios permitidos (ou use * para permitir de qualquer origem)
+        configuration.addAllowedMethod("*"); // Defina os métodos HTTP permitidos (GET, POST, etc.)
+        configuration.addAllowedHeader("*"); // Defina os cabeçalhos permitidos
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
+
+    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
+            .cors(cors -> cors.configurationSource(corsConfigurationSourceCorsConfig()))
             .csrf(AbstractHttpConfigurer::disable)
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers(HttpMethod.POST,"/auth/login").permitAll()
                 .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-                .requestMatchers(HttpMethod.POST,"/tasks").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET,"/tasks").permitAll()
                 .requestMatchers(HttpMethod.PUT,"/tasks/**").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.DELETE,"/tasks/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
             )
             .addFilterBefore(securityFiltrer, UsernamePasswordAuthenticationFilter.class)
