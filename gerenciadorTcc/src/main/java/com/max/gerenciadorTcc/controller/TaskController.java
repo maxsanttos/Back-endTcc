@@ -75,12 +75,6 @@ public class TaskController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping("/all")
-    public ResponseEntity<Void> deleteAllTasks() {
-        taskService.deleteAllTasks();
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
-
     // metodo que converter um objeto Task em um objeto TaskDTO
     private TaskDTO convertToDTO(Task task) {
         return TaskDTO.builder()
