@@ -22,11 +22,14 @@ public class User implements UserDetails{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-
+    @Column(name = "login", nullable = false)
     private String login;
 
+    @Column(name = "password", nullable = false)
     private String password;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role", nullable = false)
     private UserRole role;
 
     public User(String login, String password, UserRole role){
