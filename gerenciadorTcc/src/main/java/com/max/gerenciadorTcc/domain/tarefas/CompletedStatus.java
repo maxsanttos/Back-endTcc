@@ -1,4 +1,4 @@
-package com.max.gerenciadorTcc.domain.enums;
+package com.max.gerenciadorTcc.domain.tarefas;
 
 import lombok.Getter;
 
