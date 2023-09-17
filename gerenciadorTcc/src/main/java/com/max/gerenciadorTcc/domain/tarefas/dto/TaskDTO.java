@@ -1,6 +1,6 @@
 package com.max.gerenciadorTcc.domain.tarefas.dto;
 
-import com.max.gerenciadorTcc.domain.enums.CompletedStatus;
+import com.max.gerenciadorTcc.domain.tarefas.CompletedStatus;
 import lombok.*;
 
 @Getter
