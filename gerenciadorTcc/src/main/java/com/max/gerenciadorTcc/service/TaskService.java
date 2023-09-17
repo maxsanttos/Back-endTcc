@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.max.gerenciadorTcc.controller.dto.TaskDTO;
+import com.max.gerenciadorTcc.domain.tarefas.dto.TaskDTO;
 import com.max.gerenciadorTcc.domain.repository.TaskRepository;
 import com.max.gerenciadorTcc.domain.tarefas.Task;
 import com.max.gerenciadorTcc.exception.TaskNotFoundException;

@@ -1,4 +1,4 @@
-package com.max.gerenciadorTcc.controller.dto;
+package com.max.gerenciadorTcc.domain.tarefas.dto;
 
 import com.max.gerenciadorTcc.domain.enums.CompletedStatus;
 import lombok.*;

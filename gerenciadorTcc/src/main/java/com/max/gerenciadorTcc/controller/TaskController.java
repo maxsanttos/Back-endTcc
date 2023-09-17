@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.max.gerenciadorTcc.controller.dto.TaskDTO;
+import com.max.gerenciadorTcc.domain.tarefas.dto.TaskDTO;
 import com.max.gerenciadorTcc.domain.tarefas.Task;
 import com.max.gerenciadorTcc.service.TaskService;
 
