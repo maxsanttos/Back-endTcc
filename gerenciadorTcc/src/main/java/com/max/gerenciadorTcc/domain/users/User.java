@@ -34,9 +34,6 @@ public class User implements UserDetails{
     @Column(name = "role", nullable = false)
     private UserRole role;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Task> tasks;
-
     public User(String login, String password, UserRole role) {
         this.login = login;
         this.password = password;
