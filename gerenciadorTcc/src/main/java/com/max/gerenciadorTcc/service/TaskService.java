@@ -1,5 +1,6 @@
 package com.max.gerenciadorTcc.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,9 +15,11 @@ import com.max.gerenciadorTcc.exception.TaskNotFoundException;
 public class TaskService {
     
     private final TaskRepository taskRepository;
+    private final UserService userService;
 
-    public TaskService(TaskRepository taskRepository){
+    public TaskService(TaskRepository taskRepository, UserService userService){
         this.taskRepository = taskRepository;
+        this.userService = userService;
     }
 
     public List<Task> getAllTasks(){
@@ -31,6 +34,7 @@ public class TaskService {
         Task task = new Task();
         task.setTitle(taskDTO.getTitle());
         task.setDescription(taskDTO.getDescription());
+        task.setDueDate(taskDTO.getDueDate());
         task.setCompletedStatus(taskDTO.getCompletedStatus());
         return taskRepository.save(task);
     }
@@ -46,6 +50,7 @@ public class TaskService {
             Task existingTask = existingTaskOptional.get();
             existingTask.setTitle(taskDTO.getTitle());
             existingTask.setDescription(taskDTO.getDescription());
+            existingTask.setDueDate(taskDTO.getDueDate());
             existingTask.setCompletedStatus(taskDTO.getCompletedStatus());
             return taskRepository.save(existingTask);
         }else{
@@ -55,5 +60,31 @@ public class TaskService {
 
     public void deleteTask(Long id) {
         taskRepository.deleteById(id);
-    }  
+    }
+
+    private boolean isDueDateNear(Date dueDate) {
+        if (dueDate != null) {
+            // Obtém a data e hora atual
+            Date currentDate = new Date();
+
+            // Calcula a diferença em milissegundos entre a data de entrega e a data atual
+            long timeDifference = dueDate.getTime() - currentDate.getTime();
+
+            // Define o limite de tempo em milissegundos (5 horas = 5 * 60 * 60 * 1000 milissegundos)
+            long timeLimit = 5 * 60 * 60 * 1000;
+
+            // Verifica se a diferença está dentro do limite
+            if (timeDifference <= timeLimit) {
+                return true; // A data de entrega está próxima
+            }
+        }
+        return false; // A data de entrega não está próxima
+    }
+
+
+    private void sendNotification(Task task) {
+        String subject = "Tarefa próxima do prazo de entrega";
+        String message = "Sua tarefa \"" + task.getTitle() + "\" está próxima do prazo de entrega.";
+        userService.sendNotificationEmail(subject, message);
+    }
 }
