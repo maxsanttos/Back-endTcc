@@ -71,7 +71,7 @@ public class TaskService {
             long timeDifference = dueDate.getTime() - currentDate.getTime();
 
             // Define o limite de tempo em milissegundos (5 horas = 5 * 60 * 60 * 1000 milissegundos)
-            long timeLimit = 5 * 60 * 60 * 1000;
+            long timeLimit = 0 * 00 * 30 * 1000;
 
             // Verifica se a diferença está dentro do limite
             if (timeDifference <= timeLimit) {

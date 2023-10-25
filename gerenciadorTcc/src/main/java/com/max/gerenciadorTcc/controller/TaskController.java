@@ -81,6 +81,7 @@ public class TaskController {
                 .id(task.getId())
                 .title(task.getTitle())
                 .description(task.getDescription())
+                .dueDate(task.getDueDate())
                 .completedStatus(task.getCompletedStatus())
                 .build();
     }

@@ -35,4 +35,9 @@ public class Task {
     @Column(name = "completed_status", nullable = false)
     private CompletedStatus completedStatus;
 
+    public void validate() {
+        if (title == null || description == null || dueDate == null || completedStatus == null) {
+            throw new IllegalArgumentException("Todos os campos da tarefa devem ser preenchidos.");
+        }
+    }
 }

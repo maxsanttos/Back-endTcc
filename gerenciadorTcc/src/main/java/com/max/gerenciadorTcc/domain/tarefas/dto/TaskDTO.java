@@ -1,5 +1,6 @@
 package com.max.gerenciadorTcc.domain.tarefas.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.max.gerenciadorTcc.domain.tarefas.CompletedStatus;
 import lombok.*;
 
@@ -14,6 +15,7 @@ public class TaskDTO {
     private Long id;
     private String title;
     private String description;
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private Date dueDate;
     private CompletedStatus completedStatus;
 }
