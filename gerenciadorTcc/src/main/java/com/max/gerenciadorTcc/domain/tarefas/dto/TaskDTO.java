@@ -15,7 +15,7 @@ public class TaskDTO {
     private Long id;
     private String title;
     private String description;
-    @JsonFormat(pattern = "dd-MM-yyyy")
+    @JsonFormat(pattern = "MM-dd-yyyy")
     private Date dueDate;
     private CompletedStatus completedStatus;
 }
