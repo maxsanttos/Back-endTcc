@@ -1,11 +1,8 @@
 package com.max.gerenciadorTcc.domain.tarefas;
 
-import com.max.gerenciadorTcc.domain.users.User;
-
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Calendar;
 import java.util.Date;
 
 @Entity(name = "tarefa")

@@ -16,12 +16,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-
-
 import com.max.gerenciadorTcc.domain.repository.UserRepository;
 import com.max.gerenciadorTcc.domain.users.User;
-
-
 
 @RestController
 @RequestMapping("auth")

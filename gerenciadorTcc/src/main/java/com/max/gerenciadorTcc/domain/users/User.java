@@ -1,6 +1,5 @@
 package com.max.gerenciadorTcc.domain.users;
 
-import com.max.gerenciadorTcc.domain.tarefas.Task;
 import jakarta.persistence.*;
 import lombok.*;
 
